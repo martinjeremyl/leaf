@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}Leaf Hub3e{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/global.css') }}">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                  rel="stylesheet">
         {% endblock %}
     </head>
     <body>
@@ -12,8 +14,8 @@
 
         {% endblock %}
         {% block javascripts %}
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
+            <script src="{{ asset('build/js/security.js') }}"></script>
+            <script src="{{ asset('buid/js/home.js') }}"></script>
         {% endblock %}
     </body>
 </html>

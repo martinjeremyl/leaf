@@ -13,7 +13,7 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/home, roles: ROLE_USER }
 
     firewalls:
@@ -28,6 +28,9 @@ security:
                 check_path: login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: home
+            logout:
+                path:   /logout
+                target: /
             remember_me:
                 secret:   '%env(APP_SECRET)%'
                 lifetime: 604800 # 1 week in seconds

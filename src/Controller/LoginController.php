@@ -51,14 +51,11 @@ class LoginController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
             $user->setRoles(array('ROLE_USER'));
+            $user->setDateCreation(date_create());
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
-
             return $this->redirectToRoute('login');
         }
 
@@ -67,4 +64,23 @@ class LoginController extends Controller
             array('form' => $form->createView())
         );
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(Request $request, AuthenticationUtils $authUtils)
+    {
+
+    }
+
+    /**
+     * @Route("/fbregister", name="fbregister")
+     */
+    public function fbregister(Request $request)
+    {
+        $fb = new Facebook([
+
+        ]);
+    }
+
 }
